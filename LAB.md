@@ -3,7 +3,7 @@ State Store
 
 ## Description:
 
-Create a class that manages its `state` property.
+Create a `Store` class that manages its `state` property.
 
 Standard repository/dev stuff: README, package.json, travis-ci, tests, meaningful commits, named npm scripts, etc.
 
