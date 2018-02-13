@@ -28,15 +28,46 @@ TDD a `class` that manages a `this.state` property.
 #### `setState`
 
 * Takes a dictionary (object literal) and updates the provided keys with the new values (other keys are not changed)
+    ```js
+    const store = new Store();
+    store.setState({ name: 'wilma' });
+    // store.state is now { name: 'wilma' }
+    store.setState({ toys: ['ball', 'car', 'top'] });
+    // store.state is now { name: 'wilma', toys: ['ball', 'car', 'top'] }
+    store.setState({ name: 'freddy' });
+    // store.state is now { name: 'freddy', toys: ['ball', 'car', 'top'] }
+    store.setState({ name: 'bobby', partyDay: new Date() });
+    // store.state is now { name: 'bobby', toys: ['ball', 'car', 'top'], partyDay: '2/13/2018' }
+    ```
+    
 * Calls all of the functions that have "subscribed" (no need to pass parameters)
+    ```js
+    const store = new Store();
+    store.subscribe(() => console.log('store changed', store.state));
+    store.setState({ name: 'joanne' });
+    // logs 'store changed' { name: 'joanne' })
+    ```
+
 
 #### `subscribe`
 
-* Adds the supplied listener to the `Map` of subscribers
+Adds the supplied listener to the `Map` of subscribers
 
 #### `unsubscribe`
 
-* Removes the supplied listener from the `Map` of subscribers
+Removes the supplied listener from the `Map` of subscribers
+
+    ```js
+    const store = new Store();
+    const listener = () => console.log('store changed', store.state);
+    store.subscribe(listener);
+    store.setState({ name: 'joanne' });
+    // logs 'store changed' { name: 'joanne' })
+    store.unsubscribe(listener);
+    store.setState({ name: 'jimmy' });
+    // no log
+    ```
+
 
 ### Extend `Store`
 
