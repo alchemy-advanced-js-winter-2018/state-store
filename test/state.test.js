@@ -26,4 +26,14 @@ describe('checks store state', () => {
         assert.deepEqual(store.state, { 'item': 'widget', 'item2': 'book' });
 
     });
+
+    it('subscribe calls function subscribed to store when state changes', () => {
+        const store = new Store();
+        let run = false;
+        const func = () => {run = true;};
+        store.subscribe(func);
+        store.setState({ 'item': 'new' });
+        assert.deepEqual(run, true);
+
+    });
 });
