@@ -47,7 +47,16 @@ TDD a `class` that manages a `this.state` property.
     store.setState({ name: 'joanne' });
     // logs 'store changed' { name: 'joanne' })
     ```
-
+    
+* You don't have to check if value actually changed, if `setState` is called, always treat as new value
+    ```js
+    const store = new Store();
+    store.subscribe(() => console.log('store changed', store.state));
+    store.setState({ name: 'joanne' });
+    // logs 'store changed' { name: 'joanne' })
+    store.setState({ name: 'joanne' });
+    // still logs 'store changed' { name: 'joanne' })
+    ```
 
 #### `subscribe`
 
