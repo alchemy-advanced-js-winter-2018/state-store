@@ -82,9 +82,27 @@ Removes the supplied listener from the `Map` of subscribers
 
 You should be able to set initial state by extending `Store` and setting `this.state` in the constructor.
 
+```js
+class Person extends Store {
+    constructor(name, toys) {
+        super();
+        this.state = {
+            name: 'tammy',
+            toys: ['tank', 'airplane']
+        }
+    }
+}
+
+const person = new Person();
+person.subscribe(() => console.log(person.state));
+person.setState({ name: 'tammy the great' });
+// logs: { name: 'tammy the great', toys: ['tank', 'airplane' ]}
+```
+
 ## Bonus
 
-* Treat the `state` property as an immutable value
+* Treat the `state` property as an immutable value (use `Object.assign` to create a new state object each time
+data changes)
 
 ## Rubric:
 
