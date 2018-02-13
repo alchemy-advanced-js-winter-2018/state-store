@@ -1,5 +1,6 @@
 const assert = require('assert');
 const Store = require('../lib/Store');
+const Mall = require('../lib/Mall');
 
 describe('checks store state', () => {
     
@@ -45,5 +46,21 @@ describe('checks store state', () => {
         store.unsubscribe(func);
         store.setState({ 'item': 'new' });
         assert.deepEqual(run, false);
+    });
+
+    it('Mall extends Store', () => {
+        const mall = new Mall('Cat');
+        mall.setState({ 'item': 'new' });
+        assert.deepEqual(mall.state, { 'name': 'Cat', 'item': 'new' });
+    });
+
+    it('Mall extends store and subscribe works', () => {
+        const mall = new Mall('Cat');
+        let run = false;
+        const func = () => {run = true;};
+        mall.subscribe(func);
+        mall.setState({ 'item': 'new' });
+        assert.deepEqual(run, true);
+
     });
 });
