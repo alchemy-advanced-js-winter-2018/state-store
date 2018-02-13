@@ -36,4 +36,14 @@ describe('checks store state', () => {
         assert.deepEqual(run, true);
 
     });
+
+    it('unsubscribe removes func from set', () => {
+        const store = new Store();
+        let run = false;
+        const func = () => {run = true;};
+        store.subscribe(func);
+        store.unsubscribe(func);
+        store.setState({ 'item': 'new' });
+        assert.deepEqual(run, false);
+    });
 });
