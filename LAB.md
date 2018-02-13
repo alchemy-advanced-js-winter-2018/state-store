@@ -19,6 +19,7 @@ Use TDD to drive the implementation. Think about the tests in terms of behavior,
 
 TDD a `class` that manages a `this.state` property. 
 
+* `this.state` should be initialized to an empty object
 * Each `key` of the the state corresponds to a value we wish to track (dictionary or map)
 * The class exposes the following methods:
   * `store.setState(<newValues>)`
