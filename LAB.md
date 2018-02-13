@@ -66,16 +66,16 @@ Adds the supplied listener to the `Map` of subscribers
 
 Removes the supplied listener from the `Map` of subscribers
 
-    ```js
-    const store = new Store();
-    const listener = () => console.log('store changed', store.state);
-    store.subscribe(listener);
-    store.setState({ name: 'joanne' });
-    // logs 'store changed' { name: 'joanne' })
-    store.unsubscribe(listener);
-    store.setState({ name: 'jimmy' });
-    // no log
-    ```
+   ```js
+   const store = new Store();
+   const listener = () => console.log('store changed', store.state);
+   store.subscribe(listener);
+   store.setState({ name: 'joanne' });
+   // logs 'store changed' { name: 'joanne' })
+   store.unsubscribe(listener);
+   store.setState({ name: 'jimmy' });
+   // no log
+   ```
 
 
 ### Extend `Store`
