@@ -18,6 +18,9 @@
   "homepage": "https://github.com/pereztjacob/state-store#readme",
   "devDependencies": {
     "eslint": "^4.17.0",
-    "mocha": "^5.0.0"
+    "mocha": "^5.0.1"
+  },
+  "dependencies": {
+    "user": "0.0.0"
   }
 }
